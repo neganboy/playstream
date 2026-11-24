@@ -4,6 +4,13 @@ Estado general: **nada de esto está compilado ni probado.** En el entorno donde
 
 ## Hecho en esta entrega
 
+### Rediseño del inicio, opción A (v1.1.5, 2026-11-23)
+- `res/layout/item_display_host.xml`: tarjeta grande con la PS5 más grande (arte 160dp, imagen 76dp), borde con el color del tema, nombre y estado centrados ("En reposo • 192.168.1.230"), chips de calidad (Competitivo/Equilibrada/Nítida/Ultra) y botón grande de jugar a todo lo ancho con el color del tema.
+- `DisplayHostRecyclerViewAdapter`: los chips ponen la calidad de ESA consola (`setConsoleQuality` por MAC) y el chip elegido va relleno con el color del tema; el estado ya no va en una etiqueta sobre el arte sino en la línea centrada, como la vista previa A.
+- `res/layout/activity_main.xml`: cabecera con "by neganboy • PS5 Remote Play" bajo PLAYSTREAM, y barra inferior de acceso rápido (Añadir consola / Ajustes / Soporte) en vez del botón flotante.
+- `MainActivity`: la barra inferior abre añadir consola, Ajustes y la página de soporte; se quitó el botón flotante y su animación al desplazar.
+- Versión 1.1.5 (vc 27). GameSir X5 Lite: DESCARTADO por Alejandro, no se hace el perfil 5E.
+
 ### 5B — Temas (v1.1.4, 2026-11-23)
 - `common/Preferences.kt`: nuevo `Theme` (NEON_BLUE por defecto, VIOLET, GOLD), guardado en `app_theme`.
 - `res/values/styles.xml`: `AppTheme.NeonBlue` (cian #00E5FF, fondo #0A1418), `AppTheme.Violet` (#B388FF) y `AppTheme.Gold` (#FFC94D), cada uno con su fondo y sus superficies.

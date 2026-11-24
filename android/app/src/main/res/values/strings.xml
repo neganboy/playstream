@@ -240,6 +240,7 @@
     <string name="quality_competitive_summary">720p 60 fps H.264 at 15 Mbit/s, drawn straight to the screen with no filters, for the least delay</string>
     <string name="quality_story">Story</string>
     <string name="quality_story_summary">1080p 60 fps H.265 with super resolution, for the best picture</string>
+    <string name="quality_ultra_short">Ultra</string>
     <string name="quality_ultra_50">Ultra 50 Mbit/s (local only)</string>
     <string name="quality_ultra_100">Ultra 100 Mbit/s (local only)</string>
     <string name="quality_ultra_summary">1080p 60 fps with a lot of data. Only for a strong local Wi-Fi, not away from home</string>

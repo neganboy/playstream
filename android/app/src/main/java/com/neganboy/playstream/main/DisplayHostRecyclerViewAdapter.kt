@@ -95,6 +95,14 @@ class DisplayHostRecyclerViewAdapter(
 			}
 			it.statusTextView.setText(statusText)
 			TextViewCompat.setCompoundDrawableTintList(it.statusTextView, ContextCompat.getColorStateList(context, statusColor))
+			// Redesign A: the status lives in the centered line under the name, like the mockup
+			it.hostTextView.text = when
+			{
+				consoleType == null -> context.getString(R.string.display_host_not_registered)
+				host is PsnDisplayHost -> context.getString(statusText) + " • " + context.getString(R.string.display_host_psn)
+				host.host.isBlank() -> context.getString(statusText)
+				else -> context.getString(statusText) + " • " + host.host
+			}
 			it.artLayout.setBackgroundResource(artBackground)
 			it.stateIndicatorImageView.setImageResource(
 				when(state)
@@ -114,6 +122,58 @@ class DisplayHostRecyclerViewAdapter(
 			it.primaryActionButton.setText(actionText)
 			it.primaryActionButton.setIconResource(actionIcon)
 			it.root.setOnClickListener { clickCallback(host) }
+
+			// Quick quality chips (redesign A): one tap sets this console's quality
+			val mac = host.registeredHost?.serverMac
+			val showQualityChips = mac != null && host !is PsnDisplayHost
+			it.qualityToggleGroup.isVisible = showQualityChips
+			if(showQualityChips && mac != null)
+			{
+				val preferences = com.neganboy.playstream.common.Preferences(context)
+				val current = preferences.effectiveQuality(mac, false)
+				val checkedId = when(current)
+				{
+					com.neganboy.playstream.common.Preferences.Quality.COMPETITIVE -> R.id.qualityCompetitiveButton
+					com.neganboy.playstream.common.Preferences.Quality.BALANCED -> R.id.qualityBalancedButton
+					com.neganboy.playstream.common.Preferences.Quality.SHARP -> R.id.qualitySharpButton
+					com.neganboy.playstream.common.Preferences.Quality.ULTRA_50,
+					com.neganboy.playstream.common.Preferences.Quality.ULTRA_100 -> R.id.qualityUltraButton
+					else -> R.id.qualityBalancedButton
+				}
+				// Redesign A: the selected chip is filled with the theme accent, like the mockup
+				val updateChipColors = {
+					val accent = com.google.android.material.color.MaterialColors.getColor(context, R.attr.colorPrimary, 0)
+					val onAccent = com.google.android.material.color.MaterialColors.getColor(context, R.attr.colorOnPrimary, 0)
+					val onSurface = com.google.android.material.color.MaterialColors.getColor(context, R.attr.colorOnSurface, 0)
+					listOf(it.qualityCompetitiveButton, it.qualityBalancedButton, it.qualitySharpButton, it.qualityUltraButton).forEach { button ->
+						if(button.isChecked)
+						{
+							button.backgroundTintList = android.content.res.ColorStateList.valueOf(accent)
+							button.setTextColor(onAccent)
+						}
+						else
+						{
+							button.backgroundTintList = null
+							button.setTextColor(onSurface)
+						}
+					}
+				}
+				it.qualityToggleGroup.clearOnButtonCheckedListeners()
+				it.qualityToggleGroup.check(checkedId)
+				updateChipColors()
+				it.qualityToggleGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
+					if(!isChecked) return@addOnButtonCheckedListener
+					val quality = when(checkedId)
+					{
+						R.id.qualityCompetitiveButton -> com.neganboy.playstream.common.Preferences.Quality.COMPETITIVE
+						R.id.qualitySharpButton -> com.neganboy.playstream.common.Preferences.Quality.SHARP
+						R.id.qualityUltraButton -> com.neganboy.playstream.common.Preferences.Quality.ULTRA_50
+						else -> com.neganboy.playstream.common.Preferences.Quality.BALANCED
+					}
+					preferences.setConsoleQuality(mac, quality)
+					updateChipColors()
+				}
+			}
 
 			// PSN wakes a console up by itself, and its registration has its own card at home
 			val registered = host.isRegistered && host !is PsnDisplayHost

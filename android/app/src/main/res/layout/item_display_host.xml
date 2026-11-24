@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
     style="@style/ConsoleCard"
+    app:strokeColor="?attr/colorPrimary"
+    app:strokeWidth="1dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
@@ -39,6 +41,7 @@
 
             <TextView
                 android:id="@+id/statusTextView"
+                android:visibility="gone"
                 style="@style/StatusChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,31 +51,44 @@
                 app:drawableStartCompat="@drawable/status_dot"
                 tools:drawableTint="@color/state_ready"
                 tools:text="Ready" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/menuButton"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="6dp"
+                android:backgroundTint="?attr/colorSurfaceContainerHighest"
+                app:iconTint="?attr/colorOnSurface"
+                app:strokeColor="@color/console_card_stroke"
+                app:strokeWidth="3dp"
+                android:contentDescription="@string/action_more"
+                app:icon="@drawable/ic_more_vert" />
         </FrameLayout>
 
         <TextView
             android:id="@+id/nameTextView"
-            android:textAlignment="viewStart"
+            android:textAlignment="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:layout_marginStart="6dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="?attr/textAppearanceTitleLarge"
+            android:textAppearance="?attr/textAppearanceHeadlineMedium"
             android:textColor="?attr/colorOnSurface"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/artLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Living Room PS5" />
+            tools:text="PS5-493" />
 
         <TextView
             android:id="@+id/hostTextView"
-            android:textAlignment="viewStart"
+            android:textAlignment="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginTop="2dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBodyMedium"
@@ -84,10 +100,9 @@
 
         <TextView
             android:id="@+id/bottomInfoTextView"
-            android:textAlignment="viewStart"
+            android:textAlignment="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
             android:layout_marginTop="2dp"
             android:ellipsize="end"
             android:maxLines="1"
@@ -98,39 +113,76 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Playing Hogwarts Legacy" />
 
+        <!-- Quick quality for this console: sets its own quality, not the global one -->
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/qualityToggleGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:layout_constraintTop_toBottomOf="@id/bottomInfoTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/qualityCompetitiveButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quality_competitive"
+                android:textSize="12sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/qualityBalancedButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quality_balanced"
+                android:textSize="12sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/qualitySharpButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quality_sharp"
+                android:textSize="12sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/qualityUltraButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quality_ultra_short"
+                android:textSize="12sp" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
         <!-- Shows what selecting the card does; the card itself handles the click -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/primaryActionButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="14dp"
             android:clickable="false"
             android:focusable="false"
             android:duplicateParentState="true"
             android:importantForAccessibility="no"
-            app:layout_constraintTop_toBottomOf="@id/bottomInfoTextView"
+            android:textSize="17sp"
+            app:backgroundTint="?attr/colorPrimary"
+            app:cornerRadius="28dp"
+            app:iconTint="?attr/colorOnPrimary"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintTop_toBottomOf="@id/qualityToggleGroup"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/menuButton"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:icon="@drawable/ic_play"
             tools:text="Play" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/menuButton"
-            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="?attr/colorSurfaceContainerHighest"
-            app:iconTint="?attr/colorOnSurface"
-            app:strokeColor="@color/console_card_stroke"
-            app:strokeWidth="3dp"
-            android:nextFocusLeft="@id/card"
-            android:contentDescription="@string/action_more"
-            app:icon="@drawable/ic_more_vert"
-            app:layout_constraintTop_toTopOf="@id/primaryActionButton"
-            app:layout_constraintBottom_toBottomOf="@id/primaryActionButton"
-            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -96,7 +96,9 @@ class MainActivity : AppCompatActivity()
 		title = ""
 		setSupportActionBar(binding.toolbar)
 
-		binding.floatingActionButton.setOnClickListener { showAddConsoleSheet() }
+		binding.addConsoleButton.setOnClickListener { showAddConsoleSheet() }
+		binding.settingsButton.setOnClickListener { startActivity(Intent(this, SettingsActivity::class.java)) }
+		binding.supportButton.setOnClickListener { openSupportPage() }
 		binding.emptyDiscoverButton.setOnClickListener { viewModel.discoveryManager.active = true }
 		binding.emptyInternetPlayButton.setOnClickListener { startActivity(SettingsActivity.internetPlayIntent(this)) }
 		binding.emptyHelpButton.setOnClickListener { ConnectionHelp.showConsoleNotFound(this) }
@@ -121,16 +123,6 @@ class MainActivity : AppCompatActivity()
 		}
 		binding.hostsRecyclerView.layoutManager = layoutManager
 		updateSpanCount()
-		binding.hostsRecyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener()
-		{
-			override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int)
-			{
-				if(dy > 0)
-					binding.floatingActionButton.shrink()
-				else if(dy < 0)
-					binding.floatingActionButton.extend()
-			}
-		})
 		viewModel.displayHosts.observe(this, Observer {
 			val top = binding.hostsRecyclerView.computeVerticalScrollOffset() == 0
 			hostsAdapter.hosts = it
@@ -338,7 +330,7 @@ class MainActivity : AppCompatActivity()
 	private fun addManualConsole()
 	{
 		Intent(this, EditManualConsoleActivity::class.java).also {
-			it.putRevealExtra(binding.floatingActionButton, binding.rootLayout)
+			it.putRevealExtra(binding.addConsoleButton, binding.rootLayout)
 			startActivity(it, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
 		}
 	}
@@ -346,7 +338,7 @@ class MainActivity : AppCompatActivity()
 	private fun showRegistration()
 	{
 		Intent(this, RegistActivity::class.java).also {
-			it.putRevealExtra(binding.floatingActionButton, binding.rootLayout)
+			it.putRevealExtra(binding.addConsoleButton, binding.rootLayout)
 			startActivity(it, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
 		}
 	}
