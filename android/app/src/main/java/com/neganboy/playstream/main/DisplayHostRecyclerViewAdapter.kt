@@ -142,9 +142,9 @@ class DisplayHostRecyclerViewAdapter(
 				}
 				// Redesign A: the selected chip is filled with the theme accent, like the mockup
 				val updateChipColors = {
-					val accent = com.google.android.material.color.MaterialColors.getColor(context, R.attr.colorPrimary, 0)
-					val onAccent = com.google.android.material.color.MaterialColors.getColor(context, R.attr.colorOnPrimary, 0)
-					val onSurface = com.google.android.material.color.MaterialColors.getColor(context, R.attr.colorOnSurface, 0)
+					val accent = com.google.android.material.color.MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, 0)
+					val onAccent = com.google.android.material.color.MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnPrimary, 0)
+					val onSurface = com.google.android.material.color.MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSurface, 0)
 					listOf(it.qualityCompetitiveButton, it.qualityBalancedButton, it.qualitySharpButton, it.qualityUltraButton).forEach { button ->
 						if(button.isChecked)
 						{
