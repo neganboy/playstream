@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mapping_button_entries">
+        <item>Botón A</item>
+        <item>Botón B</item>
+        <item>Botón X</item>
+        <item>Botón Y</item>
+        <item>L1 (bumper)</item>
+        <item>R1 (bumper)</item>
+        <item>L2 (gatillo)</item>
+        <item>R2 (gatillo)</item>
+        <item>L3 (presionar stick)</item>
+        <item>R3 (presionar stick)</item>
+        <item>Start / Options</item>
+        <item>Select / Share</item>
+        <item>Mode / PS</item>
+        <item>Botón 1</item>
+        <item>Botón 2</item>
+        <item>Botón 3</item>
+        <item>Botón 4</item>
+        <item>Botón 5</item>
+        <item>Botón 6</item>
+        <item>Botón 7</item>
+        <item>Botón 8</item>
+    </string-array>
+</resources>
