@@ -9,6 +9,7 @@ import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.neganboy.playstream.common.applyPlaystreamTheme
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.neganboy.playstream.R
@@ -40,6 +41,7 @@ class EditManualConsoleActivity: AppCompatActivity(), RevealActivity
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
+		applyPlaystreamTheme()
 		super.onCreate(savedInstanceState)
 		binding = ActivityEditManualBinding.inflate(layoutInflater)
 		setContentView(binding.root)

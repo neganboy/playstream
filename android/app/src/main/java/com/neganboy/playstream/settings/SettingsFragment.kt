@@ -88,6 +88,7 @@ class DataStore(val preferences: Preferences): PreferenceDataStore()
 	override fun getString(key: String, defValue: String?) = when
 	{
 		key == preferences.qualityKey -> preferences.quality.value
+		key == preferences.themeKey -> preferences.theme.value
 		key == preferences.resolutionKey -> preferences.resolution.value
 		key == preferences.fpsKey -> preferences.fps.value
 		key == preferences.bitrateKey -> preferences.bitrate?.toString() ?: ""
@@ -100,6 +101,7 @@ class DataStore(val preferences: Preferences): PreferenceDataStore()
 		when
 		{
 			key == preferences.qualityKey -> preferences.quality = Preferences.Quality.fromValue(value) ?: return
+			key == preferences.themeKey -> preferences.theme = Preferences.Theme.fromValue(value) ?: return
 			key == preferences.resolutionKey ->
 			{
 				val resolution = Preferences.Resolution.values().firstOrNull { it.value == value } ?: return
@@ -158,6 +160,19 @@ class SettingsFragment: PreferenceFragmentCompat(), TitleFragment
 			updateCustomVisible(preferences.quality)
 			it.setOnPreferenceChangeListener { _, value ->
 				updateCustomVisible(Preferences.Quality.fromValue(value as? String) ?: preferences.quality)
+				true
+			}
+		}
+
+		preferenceScreen.findPreference<ListPreference>(preferences.themeKey)?.let {
+			it.entryValues = Preferences.Theme.values().map { theme -> theme.value }.toTypedArray()
+			it.entries = Preferences.Theme.values().map { theme -> getString(theme.title) }.toTypedArray()
+			it.summaryProvider = Preference.SummaryProvider<ListPreference> {
+				getString(preferences.theme.title)
+			}
+			it.setOnPreferenceChangeListener { _, _ ->
+				// The theme only takes effect after a restart, so restart Settings now
+				activity?.recreate()
 				true
 			}
 		}

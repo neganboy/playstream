@@ -79,10 +79,17 @@ class DisplayHostRecyclerViewAdapter(
 			it.bottomInfoTextView.isVisible = runningApp != null
 			it.bottomInfoTextView.text = runningApp?.let { app -> context.getString(R.string.display_host_playing, app) }
 
+			val theme = com.neganboy.playstream.common.Preferences(context).theme
+			val standbyArt = when(theme)
+			{
+				com.neganboy.playstream.common.Preferences.Theme.VIOLET -> R.drawable.console_art_standby_violet
+				com.neganboy.playstream.common.Preferences.Theme.GOLD -> R.drawable.console_art_standby_gold
+				else -> R.drawable.console_art_standby_neon
+			}
 			val (statusText, statusColor, artBackground) = when
 			{
 				state == DiscoveryHost.State.READY -> Triple(R.string.display_host_state_ready, R.color.state_ready, R.drawable.console_art_ready)
-				state == DiscoveryHost.State.STANDBY -> Triple(R.string.display_host_state_standby, R.color.state_standby, R.drawable.console_art_standby)
+				state == DiscoveryHost.State.STANDBY -> Triple(R.string.display_host_state_standby, R.color.state_standby, standbyArt)
 				host is PsnDisplayHost -> Triple(R.string.display_host_state_away, R.color.state_unknown, R.drawable.console_art_unknown)
 				else -> Triple(R.string.display_host_state_manual, R.color.state_unknown, R.drawable.console_art_unknown)
 			}

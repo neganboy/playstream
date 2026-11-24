@@ -194,6 +194,11 @@
     <string name="hint_add_manual_regist_host">Registered Console</string>
     <string name="add_manual_regist_on_connect">Register on first Connection</string>
     <string name="preferences_category_title_general">General</string>
+    <string name="preferences_theme_title">Theme</string>
+    <string name="preferences_theme_summary">Colors of the main screen and settings</string>
+    <string name="theme_neon_blue">Neon Blue</string>
+    <string name="theme_violet">Violet</string>
+    <string name="theme_gold">Gold</string>
     <string name="preferences_category_title_stream">Stream</string>
     <string name="preferences_category_title_export">Export</string>
     <string name="preferences_registered_hosts_title">Registered Consoles</string>

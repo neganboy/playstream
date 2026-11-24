@@ -77,6 +77,8 @@ class MainActivity : AppCompatActivity()
 
 	private lateinit var binding: ActivityMainBinding
 	private lateinit var layoutManager: GridLayoutManager
+	/** Theme applied at launch, to detect a change made in Settings */
+	private lateinit var currentTheme: Preferences.Theme
 	private var discoveryMenuItem: MenuItem? = null
 
 	private val supportUrl get() = getString(R.string.support_url)
@@ -84,6 +86,8 @@ class MainActivity : AppCompatActivity()
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
+		applyPlaystreamTheme()
+		currentTheme = Preferences(this).theme
 		super.onCreate(savedInstanceState)
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
@@ -257,6 +261,12 @@ class MainActivity : AppCompatActivity()
 	override fun onStart()
 	{
 		super.onStart()
+		// The theme may have changed in Settings: restart with the new one
+		if(Preferences(this).theme != currentTheme)
+		{
+			recreate()
+			return
+		}
 		updateSupportPrompt()
 		viewModel.checkNetwork()
 		viewModel.discoveryManager.resume()

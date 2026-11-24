@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.neganboy.playstream.common.applyPlaystreamTheme
 import androidx.fragment.app.Fragment
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -35,6 +36,7 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
+		applyPlaystreamTheme()
 		super.onCreate(savedInstanceState)
 		binding = ActivitySettingsBinding.inflate(layoutInflater)
 		setContentView(binding.root)

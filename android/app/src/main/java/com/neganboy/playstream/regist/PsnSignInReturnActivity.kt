@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.neganboy.playstream.common.applyPlaystreamTheme
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.neganboy.playstream.R
 import com.neganboy.playstream.databinding.ActivityPsnSignInReturnBinding
@@ -28,6 +29,7 @@ class PsnSignInReturnActivity: AppCompatActivity()
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
+		applyPlaystreamTheme()
 		super.onCreate(savedInstanceState)
 		val code = intent.data?.let { PsnAuth.codeFromRedirect(it) }
 		if(code == null)

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.neganboy.playstream.common.applyPlaystreamTheme
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.core.view.isVisible
@@ -68,6 +69,7 @@ class RegistActivity: AppCompatActivity(), RevealActivity
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
+		applyPlaystreamTheme()
 		super.onCreate(savedInstanceState)
 		binding = ActivityRegistBinding.inflate(layoutInflater)
 		setContentView(binding.root)

@@ -34,6 +34,12 @@
             app:summary="@string/preferences_home_screen_summary"
             app:icon="@drawable/ic_console_simple" />
 
+        <ListPreference
+            app:key="app_theme"
+            app:title="@string/preferences_theme_title"
+            app:summary="@string/preferences_theme_summary"
+            app:icon="@drawable/ic_display_normal" />
+
         <Preference
             app:key="controllers"
             app:title="@string/preferences_controllers_title"

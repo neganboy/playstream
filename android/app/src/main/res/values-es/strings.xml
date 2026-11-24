@@ -188,6 +188,11 @@
     <string name="hint_add_manual_regist_host">Consola registrada</string>
     <string name="add_manual_regist_on_connect">Registrar en la primera conexión</string>
     <string name="preferences_category_title_general">General</string>
+    <string name="preferences_theme_title">Tema</string>
+    <string name="preferences_theme_summary">Colores de la pantalla principal y de los ajustes</string>
+    <string name="theme_neon_blue">Azul neón</string>
+    <string name="theme_violet">Violeta</string>
+    <string name="theme_gold">Dorado</string>
     <string name="preferences_category_title_stream">Stream</string>
     <string name="preferences_category_title_export">Exportar</string>
     <string name="preferences_registered_hosts_title">Consolas registradas</string>

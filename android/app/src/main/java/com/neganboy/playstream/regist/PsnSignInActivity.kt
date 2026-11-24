@@ -14,6 +14,7 @@ import android.webkit.WebStorage
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import com.neganboy.playstream.common.applyPlaystreamTheme
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.neganboy.playstream.R
 import com.neganboy.playstream.databinding.ActivityPsnSignInBinding
@@ -42,6 +43,7 @@ class PsnSignInActivity: AppCompatActivity()
 	@SuppressLint("SetJavaScriptEnabled")
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
+		applyPlaystreamTheme()
 		super.onCreate(savedInstanceState)
 		binding = ActivityPsnSignInBinding.inflate(layoutInflater)
 		setContentView(binding.root)

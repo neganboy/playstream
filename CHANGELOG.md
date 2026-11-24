@@ -4,6 +4,14 @@ Estado general: **nada de esto está compilado ni probado.** En el entorno donde
 
 ## Hecho en esta entrega
 
+### 5B — Temas (v1.1.4, 2026-11-23)
+- `common/Preferences.kt`: nuevo `Theme` (NEON_BLUE por defecto, VIOLET, GOLD), guardado en `app_theme`.
+- `res/values/styles.xml`: `AppTheme.NeonBlue` (cian #00E5FF, fondo #0A1418), `AppTheme.Violet` (#B388FF) y `AppTheme.Gold` (#FFC94D), cada uno con su fondo y sus superficies.
+- `common/Theme.kt` (nuevo): `applyPlaystreamTheme()` se llama al inicio de `onCreate` en Main, Settings, registro y consolas manuales, antes de `super.onCreate`. `MainActivity` se recrea en `onStart` si el tema cambió en Ajustes.
+- Selector en Ajustes > General: `Tema` (ListPreference, `app_theme`), con sus textos en inglés y español.
+- PS5 con glow del tema: `console_art_standby_neon/violet/gold.xml` (gradiente radial con el color del tema) y `DisplayHostRecyclerViewAdapter` elige el de la consola en reposo según el tema. En reposo la PS5 se ve con el glow cian/violeta/dorado, como la vista previa aprobada.
+- Versión 1.1.4 (vc 26). El stream no cambia de tema: sigue negro.
+
 ### Renombre a PLAYSTREAM (sección 0 del encargo)
 - `android/app/build.gradle`: `namespace` y `applicationId` → `com.neganboy.playstream` (antes `com.metallic.chiaki` / `io.github.yazanj082.momiji`). Por qué: renombre pedido; la app queda como app distinta.
 - `android/app/src/main/java/com/metallic/chiaki/` movido a `.../com/neganboy/playstream/` y 88 archivos (Kotlin, layouts, `preferences.xml`, proguard) con `com.metallic.chiaki` → `com.neganboy.playstream`.

@@ -91,6 +91,22 @@ class Preferences(context: Context)
 		}
 	}
 
+	/**
+	 * App theme: the look of the main screen and settings.
+	 * NEON_BLUE is the default, the cyan glow from the reference screenshot.
+	 */
+	enum class Theme(val value: String, @StringRes val title: Int, val styleRes: Int)
+	{
+		NEON_BLUE("neon_blue", R.string.theme_neon_blue, R.style.AppTheme_NeonBlue),
+		VIOLET("violet", R.string.theme_violet, R.style.AppTheme_Violet),
+		GOLD("gold", R.string.theme_gold, R.style.AppTheme_Gold);
+
+		companion object
+		{
+			fun fromValue(value: String?) = values().firstOrNull { it.value == value }
+		}
+	}
+
 	companion object
 	{
 		val resolutionAll = Resolution.values()
@@ -306,6 +322,12 @@ class Preferences(context: Context)
 	var qualityAway: Quality
 		get() = Quality.fromValue(sharedPreferences.getString(qualityAwayKey, null)) ?: qualityAwayDefault
 		set(value) { sharedPreferences.edit().putString(qualityAwayKey, value.value).apply() }
+
+	/** App theme, see Preferences.Theme. Changing it needs an activity restart to take effect. */
+	val themeKey get() = "app_theme"
+	var theme: Theme
+		get() = Theme.fromValue(sharedPreferences.getString(themeKey, null)) ?: Theme.NEON_BLUE
+		set(value) { sharedPreferences.edit().putString(themeKey, value.value).apply() }
 
 	private fun consoleNameKey(mac: MacAddress) = "console/${mac.value}/name"
 

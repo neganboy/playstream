@@ -9,6 +9,7 @@ import android.text.method.ScrollingMovementMethod
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.neganboy.playstream.common.applyPlaystreamTheme
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
@@ -41,6 +42,7 @@ class RegistExecuteActivity: AppCompatActivity()
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
+		applyPlaystreamTheme()
 		super.onCreate(savedInstanceState)
 		binding = ActivityRegistExecuteBinding.inflate(layoutInflater)
 		setContentView(binding.root)

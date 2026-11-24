@@ -41,6 +41,67 @@
 
     <style name="AppTheme.Toolbar" parent="ThemeOverlay.Material3.Dark.ActionBar" />
 
+    <!-- PLAYSTREAM themes (5B). NeonBlue is the default: cyan glow, like the reference. -->
+    <style name="AppTheme.NeonBlue" parent="AppTheme">
+        <item name="colorPrimary">#00E5FF</item>
+        <item name="colorOnPrimary">#00272E</item>
+        <item name="colorPrimaryContainer">#003F4D</item>
+        <item name="colorOnPrimaryContainer">#B8F4FF</item>
+        <item name="colorSecondary">#4DD0E1</item>
+        <item name="colorOnSecondary">#00363E</item>
+        <item name="colorSecondaryContainer">#0E3A42</item>
+        <item name="colorOnSecondaryContainer">#B8F4FF</item>
+        <item name="android:colorBackground">#0A1418</item>
+        <item name="colorSurface">#0A1418</item>
+        <item name="colorSurfaceContainerLow">#101D21</item>
+        <item name="colorSurfaceContainer">#16262B</item>
+        <item name="colorSurfaceContainerHigh">#1E3036</item>
+        <item name="colorSurfaceContainerHighest">#283E44</item>
+        <item name="colorAccent">#00E5FF</item>
+        <item name="android:statusBarColor">#0A1418</item>
+        <item name="android:navigationBarColor">#0A1418</item>
+    </style>
+
+    <style name="AppTheme.Violet" parent="AppTheme">
+        <item name="colorPrimary">#B388FF</item>
+        <item name="colorOnPrimary">#2A1155</item>
+        <item name="colorPrimaryContainer">#4A2B8A</item>
+        <item name="colorOnPrimaryContainer">#E6D9FF</item>
+        <item name="colorSecondary">#7C4DFF</item>
+        <item name="colorOnSecondary">#22005E</item>
+        <item name="colorSecondaryContainer">#3D2A6E</item>
+        <item name="colorOnSecondaryContainer">#E6D9FF</item>
+        <item name="android:colorBackground">#120E1A</item>
+        <item name="colorSurface">#120E1A</item>
+        <item name="colorSurfaceContainerLow">#1A1426</item>
+        <item name="colorSurfaceContainer">#221A33</item>
+        <item name="colorSurfaceContainerHigh">#2C2342</item>
+        <item name="colorSurfaceContainerHighest">#382E52</item>
+        <item name="colorAccent">#B388FF</item>
+        <item name="android:statusBarColor">#120E1A</item>
+        <item name="android:navigationBarColor">#120E1A</item>
+    </style>
+
+    <style name="AppTheme.Gold" parent="AppTheme">
+        <item name="colorPrimary">#FFC94D</item>
+        <item name="colorOnPrimary">#3A2700</item>
+        <item name="colorPrimaryContainer">#6B4A00</item>
+        <item name="colorOnPrimaryContainer">#FFE9B8</item>
+        <item name="colorSecondary">#FF9E00</item>
+        <item name="colorOnSecondary">#3A2700</item>
+        <item name="colorSecondaryContainer">#5C3D00</item>
+        <item name="colorOnSecondaryContainer">#FFE9B8</item>
+        <item name="android:colorBackground">#171207</item>
+        <item name="colorSurface">#171207</item>
+        <item name="colorSurfaceContainerLow">#1F1A0C</item>
+        <item name="colorSurfaceContainer">#29220F</item>
+        <item name="colorSurfaceContainerHigh">#352C15</item>
+        <item name="colorSurfaceContainerHighest">#443A1E</item>
+        <item name="colorAccent">#FFC94D</item>
+        <item name="android:statusBarColor">#171207</item>
+        <item name="android:navigationBarColor">#171207</item>
+    </style>
+
     <!-- Registration and manual console screens -->
     <style name="MageTheme" parent="AppTheme">
         <item name="textInputStyle">@style/MageTheme.TextInputStyle</item>
